@@ -32,7 +32,7 @@ values_ = list(_serial_dict.values())
 
 ######################################打开表格，读取数据############################################
 #path_xls_mac = '/Users/liufeng/Documents/Python/data/【恒大】采购物资情况台账.xlsx'
-path_xls_win = 'F:/Python/HD表格处理/data/湖北公司采购物资情况台账(4).xlsx'#★★★★★★这里是你要读取的总表表格，路径及文件名可根据自己的需要自定义★★★★★★
+path_xls_win = 'D:/data/HD/湖北公司采购物资情况台账(4).xlsx'#★★★★★★这里是你要读取的总表表格，路径及文件名可根据自己的需要自定义★★★★★★
 r_xls = pd.read_excel(path_xls_win, sheet_name='采购台账', engine='openpyxl').fillna('///')#, dtype={'要求到货时间': str}
 print('1)成功读取数据库...')
 
@@ -132,7 +132,7 @@ print(new_df[0])
 
 create_xls_home = pd.DataFrame(new_df, columns= keys_)
 create_xls_home = create_xls_home.set_index('序号')
-create_xls_home.to_excel('F:/Python/HD表格处理/data/test.xlsx')#★★★★★★这里是创建的表格路径及名称，可自己修改单引号中的内容★★★★★★
+create_xls_home.to_excel('D:/data/HD/test.xlsx')#★★★★★★这里是创建的表格路径及名称，可自己修改单引号中的内容★★★★★★
 
 print('yes')
 

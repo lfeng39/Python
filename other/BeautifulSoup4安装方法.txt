@@ -1,0 +1,5 @@
+cmd面板中，直接输入pip3 install beautifulsoup4 提示pip版本需要更新
+输入如下命令进行升级：
+python -m pip intall --upgrade pip
+似乎提示2次，直到出现表示成功。
+“found、uninstalling、successfully uninstalling”"successfully installed"
