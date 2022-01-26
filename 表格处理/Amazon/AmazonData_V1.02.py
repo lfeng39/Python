@@ -134,7 +134,7 @@ print('J:',J_,'-(F-H)')
 4.若J为正数，该处填入Down
 '''
 I_Value = ''
-if CtoG_Value == 0 and CtoG_Value == 0:
+if CtoG_Value == 0 and CtoH_Value == 0:
     I_Value = 'New'
 elif J_ == 0:
     I_Value = 'Steady'

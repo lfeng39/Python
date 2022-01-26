@@ -5,7 +5,7 @@ import datetime
 import time
 
 '''
-V1.01将原始表单初始化，将百万条数据，按照GK0之和小于40的提取，缩减表单数据至30万条左右
+V1.01将原始表单初始化，将百万条数据，按照GKO之和小于40的提取，缩减表单数据至30万条左右
 '''
 def abcTrans(str):
     abcNumber = {
@@ -15,38 +15,36 @@ def abcTrans(str):
     return abcNumber[str]
 #计时器开始
 t1 = time.time()
+print('读取原始表格中...')
 
-monNum = '10'
+memoryData10 = pd.read_excel('D:/data/Amazon/原始数据/'+'10'+'.xlsx',skiprows=1).fillna('///')
+memoryData11 = pd.read_excel('D:/data/Amazon/原始数据/11.xlsx',skiprows=1).fillna('///')
+memoryData12 = pd.read_excel('D:/data/Amazon/原始数据/12.xlsx',skiprows=1).fillna('///')
 
-def dfXLS(dataMonth):
-    xlsPath = 'D:/data/Amazon/原始数据'+ dataMonth +'月表单.xlsx'
-    if dataMonth == '需求导入的10-12月表单':
-        df_xls = pd.read_excel(xlsPath).fillna('///')
-        return df_xls
-    elif dataMonth == '10':
-        df_xls = pd.read_excel(xlsPath).fillna('///')
-        return df_xls
-    elif dataMonth == '11':
-        df_xls = pd.read_excel(xlsPath).fillna('///')
-        return df_xls
-    elif dataMonth == '12':
-        df_xls = pd.read_excel(xlsPath).fillna('///')
-        return df_xls
+def dfXLS(xls):
+    if xls == '10':
+        return memoryData10
+    elif xls == '11':
+        return memoryData11
+    elif xls == '12':
+        return memoryData12
 
-memoryData = dfXLS(monNum)
-# x_shape = memoryData.shape#表格行与列
-nrows = memoryData.shape[0]#表格行数
-# ncols = memoryData.shape[1]#表格列数
-# print(nrows,type(nrows))
+x_shape = memoryData12.shape#表格行与列
+nrows = memoryData12.shape[0]#表格行数
+ncols = memoryData12.shape[1]#表格列数
+
 t2 = time.time()
-print(t2-t1)
+print('完成读取，耗时：',t2-t1)
+print('开始计算...')
 
+# 条件：GKO之和小于40
+# 目的：提取整行数据添加到rowsList列表
 rowsList = []
 for i in range(1,nrows):
     keyWordValue = [
-        memoryData.iloc[i,abcTrans('G')],
-        memoryData.iloc[i,abcTrans('K')],
-        memoryData.iloc[i,abcTrans('O')],
+        memoryData12.iloc[i,abcTrans('G')],
+        memoryData12.iloc[i,abcTrans('K')],
+        memoryData12.iloc[i,abcTrans('O')],
         ]
     if type(keyWordValue[0]) != float:
         keyWordValue[0] = 0
@@ -58,24 +56,15 @@ for i in range(1,nrows):
     he = round(sum(keyWordValue)*100,2)
 
     if he < 40:
-        rowsList.append(memoryData.loc[i,:])
+        rowsList.append(memoryData12.loc[i,:])
 
-rowsList.insert(0, memoryData.loc[0,:])
+# 创建新列表的key，创建新表的保存路径，输出处理后的表
+rowsList.insert(0, memoryData12.loc[0,:])
 create_xls_home = pd.DataFrame(rowsList)
-dataMonth = 'D:/data/Amazon/' + monNum +'.xlsx'
+dataMonth = 'D:/data/Amazon/' + 12 +'.xlsx'
 create_xls_home.to_excel(dataMonth, index = 0)#★★★★★★这里是创建的表格路径及名称，可自己修改单引号中的内容★★★★★★
 
 #计时器结束
 t3 = time.time()
-print(t3 - t1)
-
-#关键词对比
-# for i in range(1, nrows):
-#     searchWord = memoryData.iloc[i,abcTrans('B')]
-#     keyWordList = ['Christmas tree', 'Christmas light tree', ' ', 'Christmas movies', 'christmas movies']
-#     wordNum = keyWordList.count(' ')
-#     print(type(searchWord), searchWord)
-#     if searchWord in keyWordList:
-#         print(keyWordList.index(searchWord))
-#     else:
-#         print('no word')
+print('完成计算,耗时：',t3 - t2)
+print('总耗时：',t3 - t1)

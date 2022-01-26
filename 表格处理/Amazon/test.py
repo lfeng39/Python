@@ -9,7 +9,8 @@
 #     else:
 #         print('no word')
 
-def getUnitCell(xls):
-    tempList = 'tempList1'+xls
-    return tempList
-print(getUnitCell('11'))
+dict = {}
+for i in range(3):
+    dict[i] = i
+
+print(dict)

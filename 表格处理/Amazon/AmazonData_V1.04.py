@@ -1,4 +1,5 @@
 #打开数据总表
+from tkinter import ROUND
 import pandas as pd
 import re
 import datetime
@@ -54,7 +55,7 @@ lenRows10 = memoryData10.shape[0]
 widCol12 = memoryData12.shape[1]#0为行，1为列
 widCol11 = memoryData11.shape[1]
 widCol10 = memoryData10.shape[1]
-#搜索词列表长度
+# 搜索词列表长度
 lenSWL12 = len(getColValues('12','B'))
 lenSWL11 = len(getColValues('11','B'))
 lenSWL10 = len(getColValues('10','B'))
@@ -135,10 +136,93 @@ CtoF_List = getColValues('12','C')
 '''G
 相同搜索词11月表单C栏内容，若无填0
 '''
-
-# print(getUnitCell('11','C'))
+CtoG_List = getUnitCell('11','C')
+# print()
 
 '''H
 相同搜索词10月表单C栏内容，若无填0
 '''
-print(getUnitCell('10','C'))
+CtoH_List = getUnitCell('10','C')
+# print(getUnitCell('10','C'))
+
+for rowIndex in range(len(getUnitCell('12','B'))):
+    '''E
+    (F+G+H)/3
+    '''
+
+    E_average  = round((CtoF_List[rowIndex] + CtoG_List[rowIndex] + CtoH_List[rowIndex])/3,2)
+    # print('E:',E_average,'-ranking average (F+G+H)/3')
+
+    '''J
+    F-H
+    '''
+
+    J_ = CtoF_List[rowIndex] - CtoH_List[rowIndex]
+    # print('J:',J_,'-(F-H)')
+
+    '''I
+    1.若G、H单项或两项为0，该处填入New 
+    2.若J=0，该处填入Steady
+    3.若J为负数，该处填入Up
+    4.若J为正数，该处填入Down
+    '''
+
+    I_Value = ''
+    if CtoG_List[rowIndex] == 0 and CtoH_List[rowIndex] == 0:
+        I_Value = 'New'
+    elif J_ == 0:
+        I_Value = 'Steady'
+    elif J_ < 0:
+        I_Value = 'Up'
+    elif J_ > 0:
+        I_Value = 'Down'
+    # print(rowIndex,'I:',I_Value,'- Trend')
+
+    '''K
+    F/G/H非0的数量
+    '''
+    K_Value = ''
+    FGHList = [CtoF_List[rowIndex],CtoG_List[rowIndex],CtoH_List[rowIndex]]
+    for i in range(len(FGHList)):
+        if FGHList.count('0') == i:
+            K_Value = -i + 3
+    # print('K:',K_Value,'- !=0 Num')
+
+'''L
+G_K_O_1
+'''
+L_List = getUnitCell('12','L').append('///')
+
+'''M
+G_K_O_2
+'''
+M_List = getUnitCell('12','M').append('///')
+
+'''N
+G_K_O_3
+'''
+N_List = getUnitCell('12','N').append('///')
+
+'''O
+12月表单D栏内容
+'''
+DtoO_List = getColValues('12','D')
+
+'''P
+相同搜索词11月表单D栏内容，若无填/
+'''
+DtoP_List = getUnitCell('11','D')
+
+'''q
+相同搜索词11月表单D栏内容，若无填/
+'''
+DtoQ_List = getUnitCell('10','D')
+
+'''
+从OPQ开始，循环处理
+'''
+
+'''
+创建输出表格字典
+'''
+outXlsDict = {}
