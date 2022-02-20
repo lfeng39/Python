@@ -1,10 +1,5 @@
-#打开数据总表
-from calendar import month
 import pandas as pd
-import re
-import datetime
 import time
-
 
 def abcTrans(str):
     abcNumber = {

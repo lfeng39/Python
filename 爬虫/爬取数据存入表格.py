@@ -21,7 +21,7 @@ headers = {
 
 
 start_url = 'https://s.taobao.com/search?q='
-goods = 'lego 21309'
+goods = 'lego 42115 兰博基尼'
 url = start_url + goods + '&s=' + str(0)
 
 get_url = requests.get(url, headers = headers)
@@ -40,9 +40,10 @@ price = re.findall(res_price, html)
 word = []
 sale = []
 #riqi = []
-path_xls = 'D:/Python/data/lego0601.xlsx'
+path_xls_win = 'D:/Python-Work/data/lego0601.xlsx'
+path_xls_mac = '/Users/liufeng/Documents/Python/data/lego42.xlsx'
 
-# 存储到xls表格
+
 print('=================================')
 location = time.localtime(time.time())
 now = time.strftime('%Y-%m-%d',time.localtime(time.time()))
@@ -58,31 +59,22 @@ print('=================================')
 #遍历关键词和价格元素
 for i in range(0, len(title)):
     res_list = '【' + price[i] + '】' + title[i]
-    # print(res_list)
+    print(res_list)
     word.append(title[i])
     sale.append(price[i])
     #riqi.append(now)
 #print(word)
 
+
+
 lego_21309 = pd.DataFrame({'售价':sale, '关键词':word})
 lego_21309 = lego_21309.set_index('售价')
-# print(lego_21309)
-lego_21309.to_excel(path_xls, sheet_name = now)
+print(lego_21309)
+
 #writer = pd.ExcelWriter(path_xls)
-# with lego_21309.ExcelWriter(path_xls) as writer:
-#     lego_21309.to_excel(writer, sheet_name = now)
+with pd.ExcelWriter(path_xls_mac) as writer:
+    lego_21309.to_excel(writer, sheet_name = now)
     #lego_21309.to_excel(writer, sheet_name = tomorrowTime)
 #
 #lego_21309[0:3]
 print('yes')
-
-# 存储到txt文件
-# with open('d:/Python/data/sku.txt', mode='w', encoding='utf-8') as file:
-#     for i in range(0, len(title)):
-#         #print(int(float(price[i])))
-#         #max_price = max(int(float(price[i])))
-#         if int(float(price[i])) > 500:
-#             print(i+1, "  ￥" + price[i], "  【" + title[i] + "】")
-#             file.write(str(i+1)+"  ￥" + price[i]+"  【" + title[i] + "】\n")
-#         else:
-#             pass

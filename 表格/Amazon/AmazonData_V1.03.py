@@ -1,9 +1,5 @@
-#打开数据总表
 import pandas as pd
-import re
-import datetime
 import time
-
 '''
 第一步：读取10、11、12三张表，并分别存储到内存变量
 '''

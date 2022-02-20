@@ -21,7 +21,7 @@ headers = {
 
 
 start_url = 'https://s.taobao.com/search?q='
-goods = 'lego 42115 兰博基尼'
+goods = 'lego 21309'
 url = start_url + goods + '&s=' + str(0)
 
 get_url = requests.get(url, headers = headers)
@@ -39,22 +39,6 @@ price = re.findall(res_price, html)
 
 word = []
 sale = []
-#riqi = []
-path_xls_win = 'D:/Python-Work/data/lego0601.xlsx'
-path_xls_mac = '/Users/liufeng/Documents/Python/data/lego42.xlsx'
-
-
-print('=================================')
-location = time.localtime(time.time())
-now = time.strftime('%Y-%m-%d',time.localtime(time.time()))
-print(now)
-
-nowTime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')#现在
-pastTime = (datetime.datetime.now()-datetime.timedelta(hours=1)).strftime('%Y-%m-%d %H:%M:%S')#过去一小时时间
-afterTomorrowTime = (datetime.datetime.now()+datetime.timedelta(days=2)).strftime('%Y-%m-%d %H:%M:%S')#后天
-tomorrowTime = (datetime.datetime.now()+datetime.timedelta(days=1)).strftime('%Y-%m-%d')#明天
-#print('\n',nowTime,'\n',pastTime,'\n',afterTomorrowTime,'\n',tomorrowTime)
-print('=================================')
 
 #遍历关键词和价格元素
 for i in range(0, len(title)):
@@ -62,19 +46,25 @@ for i in range(0, len(title)):
     print(res_list)
     word.append(title[i])
     sale.append(price[i])
-    #riqi.append(now)
 #print(word)
 
+print('=================================')
+location = time.localtime(time.time())
+now = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+print(now)
+nowTime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')#现在
+pastTime = (datetime.datetime.now()-datetime.timedelta(hours=1)).strftime('%Y-%m-%d %H:%M:%S')#过去一小时时间
+afterTomorrowTime = (datetime.datetime.now()+datetime.timedelta(days=2)).strftime('%Y-%m-%d %H:%M:%S')#后天
+tomorrowTime = (datetime.datetime.now()+datetime.timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')#明天
+#print('\n',nowTime,'\n',pastTime,'\n',afterTomorrowTime,'\n',tomorrowTime)
+print('=================================')
 
-
-lego_21309 = pd.DataFrame({'售价':sale, '关键词':word})
+lego_21309 = pd.DataFrame({'关键词':word, '售价':sale})
 lego_21309 = lego_21309.set_index('售价')
 print(lego_21309)
 
-#writer = pd.ExcelWriter(path_xls)
-with pd.ExcelWriter(path_xls_mac) as writer:
-    lego_21309.to_excel(writer, sheet_name = now)
-    #lego_21309.to_excel(writer, sheet_name = tomorrowTime)
-#
+url_win = 'D:/Python-Work/data/lego0601.xlsx'
+# url_mac = '/Users/liufeng/Documents/Python/data/lego0601.xlsx'
+lego_21309.to_excel(url_win)
 #lego_21309[0:3]
-print('yes')
+#print(lego_21309)

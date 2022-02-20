@@ -1,8 +1,4 @@
-#打开数据总表
-from tkinter import ROUND
 import pandas as pd
-import re
-import datetime
 import time
 
 '''

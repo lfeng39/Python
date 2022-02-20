@@ -1,16 +1,14 @@
-#打开数据总表
 import pandas as pd
-import re
-import datetime
 import time
 
 
-def abcTrans(str):
-    abcNumber = {
-        'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9, 'K': 10, 'L': 11, 'M': 12,
-        'N': 13,'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18, 'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25
-    }
-    return abcNumber[str]
+# def abcToCol(str):
+abcToCol = {
+    'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9, 'K': 10, 'L': 11, 'M': 12,
+    'N': 13,'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18, 'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25,
+    'AA': 26, 'AB': 27, 'AC': 28, 'AD': 29, 'AE': 30, 'AF': 31, 'AG': 32, 'AH': 33, 'AI': 34, 'AJ': 35, 'AK': 36, 'AL': 37, 'AM': 38,
+    'AN': 39,'AO': 40, 'AP': 41, 'AQ': 42, 'AR': 43, 'AS': 44, 'AT': 45, 'AU': 46, 'AV': 47, 'AW': 48, 'AX': 49,
+}
 #计时器开始
 start = time.time()
 def dfXLS():
@@ -27,9 +25,9 @@ print(x_shape)
 
 rowsList = []
 for i in range(1,10):
-    get_G_Data = memoryData.iloc[i,abcTrans('G')]
-    get_K_Data = memoryData.iloc[i,abcTrans('K')]
-    get_O_Data = memoryData.iloc[i,abcTrans('O')]
+    get_G_Data = memoryData.iloc[i,abcToCol['G']]
+    get_K_Data = memoryData.iloc[i,abcToCol['K']]
+    get_O_Data = memoryData.iloc[i,abcToCol['O']]
     he = round((get_G_Data + get_K_Data + get_O_Data)*100, 2)
 
     if he < 40:
