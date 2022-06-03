@@ -20,16 +20,24 @@ def Headers(site_brand):
             'authorization': 'oauth c3cef7c66a1843f8b3a9e6a1e3160e20'
         }
     elif 'amazon' == site_brand:
-         amazon_headers = {
+        headers = {
             'authority': 'www.amazon.com',
-            'method': 'GET',
-            'path': '/s?k=led+outdoor&ref=nb_sb_noss_2',
-            'scheme': 'https',
-            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-            'accept-encoding': 'gzip, deflate, br',
-            'accept-language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
-            'cache-control': 'max-age=0',
-            'cookie': 'session-id=142-0742346-9197407; ubid-main=133-7610726-3999729; x-main="4kcZZToPabr9kasOAP@fUF?gnBEFaM5G"; at-main=Atza|IwEBIHakK7hcNKZ8SnOHIESyAbGkJm881U1DzVVSDUsQtW4m9IBGj3eRSHyCTielSYV5LFEZgM52WDU-iPqlVlfoyFH50lsV1lcHWTw-Lx0TKAQtyZ6lNtbPPeR61oLvW9lrKdJhmGKMyb_q4CM05NPDtIWwNwNlfDHJlWJiyMvDVj_ei_0q8rIGvCsv0iSo5UecLdunGbhQcvp1cCOQl9JecTQY; sess-at-main="QG3NzTZK9Oq/AnB9D2p9/kHvrdx2o/40aMhb9ncESI0="; sst-main=Sst1|PQFB0bUIS1fXsMsV2S59DyOUCW5nwqhMy78gX87n0biokDXU_fAKXLMZr9qeysTcdSa7CZu1fReugmLsmJSOEcuOW6rifXNp3uuO-9JwzfegBoGOwKCMPvM2DVFb9vKeL8qsOvwdE1CF1nsDPO7C67FLmrV3ReHONyDcqc58rITDQebzhrYOXYIRj-Lx4memd-sVbkKPZGLrw7pE7Flqpoodv66BW8DlE1lWRyZv5DvGAIivV_7JHGD3hJCJM_WYWjmiQJfLy4fx_c_iVECH2s1IHTppiitYq8kwq54gZUOfmO4; lc-main=en_US; session-id-time=2082787201l; csd-key=eyJ3YXNtVGVzdGVkIjp0cnVlLCJ3YXNtQ29tcGF0aWJsZSI6dHJ1ZSwid2ViQ3J5cHRvVGVzdGVkIjpmYWxzZSwidiI6MSwia2lkIjoiYjVjNzZlIiwia2V5IjoiVDk4S251VHI2aWMvdE44OGVYcEhsVXBOdjM1dEdsdjR2UEJZOVpNL052SjVmRzNsMEV4RjlzdStQcU9LZ1dTQ1owSTF4bWQ3amJXY1RUSE55OWJleDNaMGRYSG93eW5kRk1aaDF2c2Zpc0ZZTmdFeXllZ2lybktCNUd4Y0REdUF3eEhiUit5RytoU1QvSnZvTDh5SnRiT1JJVDBqanJtK2N3blFGbGpXTHZRYnhjSkZiNWJ6MTdJL0ZZUmRockZ3ejI3Z20wVGVwRFVmNHRGc1A1K3RZbFVSTHp4ckNQWHBCMm8xQ0RqTVIrK0l0dVNhelR6Q2FyVEl0UmJUdE0yZ2xVUGtqYU44UDRoUEl2NzFQT25QVWVBQWpMSWRkMURrSXlJb0FXZlBKalByaE9pOXV4Q0RVSjVYVUdrVzJtY0J6cFJHMEtydTg0R1QyZEs4R2JuQzNBPT0ifQ==; session-token="iYYndurGfOfXDEnCsH9uwyeX7b0S+ZABM97JVwXRTvNCEaqpBjoPjB5SmgoBsH8RZRpnTyH3FR3j0vVnX2Jlm96lE8f/iksXfejUBpTe5aVQQ6iCjhz/i/rSjgLeZ2aG8khFYc6fXz/7BaqN2qGUsVjZ+NDN0VmQXQHey4LkWKp58hQbDH6JW9jFkhDwgPC7hfZhQDMsUMH4ZaycRAq2qYLsqy5iTaJW5pUsXmBnZgaCx2DW3EkX9TEmOtVijRRhEt6ML6qD0/+9mVgz1Y26ig=="; csm-hit=adb:adblk_no&t:1608966225254&tb:FCA9V8C9Y22B2CENQZCH+s-QNQR62MA46RMT9NTY65E|1608966225254',
+            'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="98", "Google Chrome";v="98"',
+            'rtt': '350',
+            'sec-ch-ua-mobile': '?0',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36',
+            'accept': 'text/html,*/*',
+            'x-requested-with': 'XMLHttpRequest',
+            'downlink': '1.45',
+            'ect': '3g',
+            'sec-ch-ua-platform': '"Windows"',
+            'sec-fetch-site': 'same-origin',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-dest': 'empty',
+            'referer': 'https://www.amazon.com/s?k=baby+monitor&sprefix=bab%2Caps%2C297&ref=nb_sb_ss_ts-doa-p_1_3',
+            'accept-language': 'zh-CN,zh;q=0.9',
+            # 'cookie': 'session-id=133-9242345-7882433; i18n-prefs=USD; ubid-main=131-6777554-5563620; lc-main=en_US; session-id-time=2082787201l; skin=noskin; session-token=Ndof0MdqXo/1NNBgx5tLtfZJ/yveZAFOn4k//g/miRTIbTDsg5AfL1cmsHC3guDLQjbrRGalJfBX+1X/LFv4F5PtKPri29zKCHCysytIpt4OPCIoP5h61bS95YmW8ZQRjXTXwQ/qCk/LyTaJjUiF6oUNx5PsccRaL0W/ymnAupLvotXnrOz4amHldjk8lAjH; csm-hit=tb:s-KZT0PF2SNSNDBR0TH1ZY|1647587549510&t:1647587550711&adb:adblk_no',
+            'cookie': 'session-id=147-1122365-4740253; session-id-time=2082787201l; i18n-prefs=USD; skin=noskin; ubid-main=135-6782372-6842461; lc-main=en_US; session-token=RbFJddhjZUa5vox+FlUJE/xOprFZTI8ujE1A0ij61C0R3f7//29BPgC+TmrFSSAxxO30Vn9d1998Ct+PY9PzcKC6Qnu3iFShNkxqG+ua0IUaqcZ83atQFfrzD0sOsMP3c8kXJjrSobpR7rjz4Y3RWk6WMeGXegcnVu307RJia5guC4DOoRSvieN9LdZMRgW0; csm-hit=tb:s-7T3ZD5V0KA63JS40D8YH|1645690257257&t:1645690258208&adb:adblk_no',
         }
     else:
         pass
